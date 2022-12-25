@@ -16,9 +16,3 @@ export default function FirstPost() {
     </Layout>
   );
 }
-export async function getStaticProps(){
-  const data = await axios('/test')
-  return{
-    props:{data}
-  }
-}
