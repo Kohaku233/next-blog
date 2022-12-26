@@ -3,8 +3,8 @@ import Link from "next/link";
 import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 
-const name = "Bob";
-export const siteTitle = "Bob personal website";
+const name = "Kohaku";
+export const siteTitle = "Kohaku Dream House";
 
 export default function Layout({ children, home }) {
   return (
@@ -46,7 +46,7 @@ export default function Layout({ children, home }) {
         )}
       </header>
       <main>{children}</main>
-      {home && (
+      {!home && (
         <div className={styles.backToHome}>
           <Link href="/">
             <a>← Back to home</a>

@@ -3,36 +3,33 @@ import Link from "next/link";
 import Layout, { siteTitle } from "../components/Layout";
 import utilStyles from "../styles/utils.module.css";
 import { getSortedPostsData } from "../lib/posts";
+import Date from "../components/date";
 
 export default function Home({ allPostsData }) {
-  console.log(allPostsData);
   return (
-    <Layout>
+    <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <h1>About me</h1>
-        <p>I'm a cool guy!</p>
+        <h2 className={utilStyles.headingLg}>About me</h2>
         <p>
-          (This is a sample website - you’ll be building a site like this on{" "}
-          <a href="https://www.nextjs.cn">our Next.js tutorial</a>.)
+          I was a junior front-end engineer, dreaming of going to a concert and
+          being free to spend the day lying on the mall reading something.
         </p>
-        <h1>Recent Posts</h1>
-        <Link href="/posts/first-post">
-          <a>first post</a>
-        </Link>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
             </li>
           ))}
         </ul>
